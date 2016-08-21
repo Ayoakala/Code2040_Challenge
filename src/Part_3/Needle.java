@@ -35,14 +35,14 @@ public class Needle {
 	    
 	}
 	public static void main(String[] args) {
-		final String needle = "http://challenge.code2040.org/api/haystack";
+		final String url = "http://challenge.code2040.org/api/haystack";
 		final String token = "\"b47c051cdd77da27b1d91635927f82f8\"";
 		final String git = "\"https://github.com/Ayoakala/Code2040_Challenge\"";
 		final String validate = "http://challenge.code2040.org/api/haystack/validate";
 
 		String payload_1="{\"token\":"+token+",\"github\":"+git+"}";	
 
-		String JsonArray = sendPostRequest(needle,  payload_1);
+		String JsonArray = sendPostRequest(url,  payload_1);
 		System.out.println(JsonArray);
 		
 		String[] toArray= JsonArray.split(":|\\,+|\\{|\\}+|\\[|\\]");
