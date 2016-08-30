@@ -1,15 +1,13 @@
-package Part_1;
+package Part_2;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 
-public class Register {
+public class Reverse_Iteration {
+
 	/*
 	 * This method opens up a network to connect with the web end point for the
 	 * API so that we can send request and receive JSON objects back syntax
@@ -47,16 +45,9 @@ public class Register {
 
 	}
 
-	public static void main(String args[]) {
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
 
-		 //This builds the request with the payload to send to the web endpoint
-		final String register = "http://challenge.code2040.org/api/register";
-		final String token = "\"b47c051cdd77da27b1d91635927f82f8\"";
-		final String git = "\"https://github.com/Ayoakala/Code2040_Challenge\"";
-		String payload = "{\"token\":" + token + ",\"github\":" + git + "}";
-		
-		
-		System.out.println(sendPostRequest(register, payload));
 	}
 
 }

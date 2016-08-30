@@ -34,6 +34,7 @@ public class Needle {
 	    }
 	    
 	}
+	
 	public static void main(String[] args) {
 		final String url = "http://challenge.code2040.org/api/haystack";
 		final String token = "\"b47c051cdd77da27b1d91635927f82f8\"";

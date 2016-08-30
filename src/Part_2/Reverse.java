@@ -8,6 +8,15 @@ import java.net.URL;
 
 public class Reverse {
 
+	/*
+	 * This method opens up a network to connect with the web end point for the
+	 * API so that we can send request and receive JSON objects back syntax
+	 * gotten from:
+	 * http://stackoverflow.com/questions/15570656/how-to-send-request-payload-
+	 * to-rest-api-in-java and:
+	 * http://programmers.stackexchange.com/questions/158603/what-does-the-term-
+	 * payload-mean-in-programming
+	 */
 	public static String sendPostRequest(String requestUrl, String payload) {
 	    try {
 	        URL url = new URL(requestUrl);
@@ -39,6 +48,8 @@ public class Reverse {
 	
 	
 	public static void main(String[] args) {
+		
+		//This builds the request with the payload to send to the web endpoint
 		final String reverse = "http://challenge.code2040.org/api/reverse";
 		final String token = "\"b47c051cdd77da27b1d91635927f82f8\"";
 		final String git = "\"https://github.com/Ayoakala/Code2040_Challenge\"";
@@ -56,6 +67,9 @@ public class Reverse {
 		 for (int x = toArray.length-1; x>=0;x--){
 			 converted+= toArray[x];
 		 }
+		 
+		 // you need to include the quotations in order for the payload to be
+		 // to send to the web endpoint
 		 converted+="\"";
 		 System.out.println(converted);
 		 

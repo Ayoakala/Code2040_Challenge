@@ -27,6 +27,8 @@ public class Needle_Iteration {
 		String needle = response.getString("needle");
 		ArrayList<String> haystack = getHaystack(response);
 
+		// simple for loop that searches for where the needle is in the array
+		// and get the index
 		for (int i = 0; i < haystack.size(); i++) {
 			if (needle.equals(haystack.get(i))) {
 				index = i;
@@ -38,6 +40,15 @@ public class Needle_Iteration {
 		System.out.println(sendPostRequest(validate, payload_2));
 	}
 
+	/*
+	 * I tried something a little different here. I realized that I get a JSON
+	 * Object back by sending a payload to the endpoint and I thought that there
+	 * should be a better way to parse the information since JSON is pretty
+	 * universal. I used:
+	 * https://processing.org/reference/JSONObject_getJSONArray_.html This
+	 * parses out the variable given by the JSON response and since I get a JSON
+	 * array back there is also a call for this in java
+	 */
 	public static ArrayList<String> getHaystack(JSONObject response) throws JSONException {
 		ArrayList<String> haystack = new ArrayList<String>();
 		JSONArray respArray = response.getJSONArray("haystack");
@@ -48,6 +59,15 @@ public class Needle_Iteration {
 		return haystack;
 	}
 
+	/*
+	 * This method opens up a network to connect with the web end point for the
+	 * API so that we can send request and receive JSON objects back syntax
+	 * gotten from:
+	 * http://stackoverflow.com/questions/15570656/how-to-send-request-payload-
+	 * to-rest-api-in-java and:
+	 * http://programmers.stackexchange.com/questions/158603/what-does-the-term-
+	 * payload-mean-in-programming
+	 */
 	public static String sendPostRequest(String requestUrl, String payload) {
 		try {
 			URL url = new URL(requestUrl);
