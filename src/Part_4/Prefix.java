@@ -14,6 +14,7 @@ import org.json.JSONObject;
 
 public class Prefix {
 
+	
 	public static void main(String[] args) throws JSONException {
 		final String token = "\"b47c051cdd77da27b1d91635927f82f8\"";
 		final String url = "http://challenge.code2040.org/api/prefix";
@@ -23,18 +24,20 @@ public class Prefix {
 		String payload_1 = "{\"token\":" + token + ",\"github\":" + git + "}";
 
 		JSONObject response = new JSONObject(sendPostRequest(url, payload_1));
+		
+		// gets the JSON variable with the name "prefix"
 		String prefix = response.getString("prefix");
-		 System.out.println(prefix);
+		// System.out.println(prefix);
 		ArrayList<String> prefixArray = getArray(response);
 
-		System.out.println();
+		// System.out.println();
 		for (int i = 0; i < prefixArray.size(); i++) {
 			if (prefixArray.get(i).contains(prefix)) {
 				prefixArray.remove(i);
-				i = i-1;
+				i = i - 1;
 			}
 		}
-		
+
 		JSONArray reply = new JSONArray(prefixArray);
 		String payload_2 = "{\"token\":" + token + ",\"array\":" + reply + "}";
 
@@ -42,6 +45,10 @@ public class Prefix {
 
 	}
 
+	/*
+	 * I used the same logic in my Part 3 (Needle_Iteration) to make use of the
+	 * JSON object properties
+	 */
 	public static ArrayList<String> getArray(JSONObject response) throws JSONException {
 		ArrayList<String> array = new ArrayList<String>();
 		JSONArray respArray = response.getJSONArray("array");
@@ -52,6 +59,15 @@ public class Prefix {
 		return array;
 	}
 
+	/*
+	 * This method opens up a network to connect with the web end point for the
+	 * API so that we can send request and receive JSON objects back syntax
+	 * gotten from:
+	 * http://stackoverflow.com/questions/15570656/how-to-send-request-payload-
+	 * to-rest-api-in-java and:
+	 * http://programmers.stackexchange.com/questions/158603/what-does-the-term-
+	 * payload-mean-in-programming
+	 */
 	public static String sendPostRequest(String requestUrl, String payload) {
 		try {
 			URL url = new URL(requestUrl);

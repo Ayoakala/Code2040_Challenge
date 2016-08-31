@@ -13,6 +13,11 @@ import org.json.JSONObject;
 
 public class Needle_Iteration {
 
+	/*
+	 * I decided to iterate on my previous answer because i wanted to make use
+	 * of the object properties and become more familiar with them! This
+	 * Definitely helped me understand JSON a little better
+	 */
 	public static void main(String[] args) throws JSONException {
 		final String url = "http://challenge.code2040.org/api/haystack";
 		final String token = "\"b47c051cdd77da27b1d91635927f82f8\"";
@@ -24,6 +29,7 @@ public class Needle_Iteration {
 		int index = -1;
 		String indexToString = "\"";
 
+		// gets the JSON variable with the name "needle"
 		String needle = response.getString("needle");
 		ArrayList<String> haystack = getHaystack(response);
 

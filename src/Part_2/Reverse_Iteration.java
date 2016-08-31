@@ -6,7 +6,33 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class Reverse_Iteration {
+
+	/*
+	 * I wanted to iterate on this because i wanted to make the solution more
+	 * concise and readable to maybe a no technical person. rather than making
+	 * use of an array i used a StringBuilder to reverse the string response
+	 */
+	public static void main(String[] args) throws JSONException {
+		// This builds the request with the payload to send to the web endpoint
+		final String url = "http://challenge.code2040.org/api/reverse";
+		final String token = "\"b47c051cdd77da27b1d91635927f82f8\"";
+		final String git = "\"https://github.com/Ayoakala/Code2040_Challenge\"";
+		final String validate = "http://challenge.code2040.org/api/reverse/validate";
+
+		String payload_1 = "{\"token\":" + token + ",\"github\":" + git + "}";
+
+		String reverseThis = (sendPostRequest(url, payload_1));
+
+		String reversed = new StringBuilder(reverseThis).reverse().toString();
+		reversed = "\"" + reversed + "\"";
+		String payload_2 = "{\"token\":" + token + ",\"string\":" + reversed + "}";
+		System.out.println(sendPostRequest(validate, payload_2));
+
+	}
 
 	/*
 	 * This method opens up a network to connect with the web end point for the
@@ -42,11 +68,6 @@ public class Reverse_Iteration {
 		} catch (Exception e) {
 			throw new RuntimeException(e.getMessage());
 		}
-
-	}
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 
 	}
 
